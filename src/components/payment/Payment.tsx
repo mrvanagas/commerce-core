@@ -12,7 +12,7 @@ const Payment = () => {
   const [selectedMethod, setSelectedMethod] = useState('creditCard');
 
   return (
-    <div className='bg-white border-t border-b border-neutral-550 p-4 mx-auto'>
+    <div className='bg-white border-y lg:border-y-0 border-neutral-550 p-4 mx-auto'>
       <h2 className='text-2xl font-bold mb-2 text-neutral-450'>Payment</h2>
       <p className='font-normal text-xs mb-3 text-neutral-850'>
         All transactions are secure and encrypted.

@@ -27,26 +27,26 @@ const Delivery: React.FC = () => {
   };
 
   return (
-    <div className='bg-white border-t border-b border-neutral-550 p-4 mb-4 text-neutral-450'>
+    <div className='bg-white border-y lg:border-y-0 border-neutral-550 p-4 mb-4 text-neutral-450'>
       <h2 className='text-2xl font-bold mb-4'>Delivery</h2>
-      <div className='flex justify-between gap-2 mb-4'>
+      <div className='flex justify-normal gap-2 mb-4'>
         <Input placeholder={'First Name'} />
         <Input placeholder={'Last Name'} />
       </div>
       <Input placeholder={'Address'} className='mb-4' />
-      <div className='flex flex-col md:flex-row gap-2 mb-4'>
-        <Input placeholder={'City'} className='w-full md:w-auto mb-2' />
-        <div className='flex flex-row gap-2 w-full'>
+      <div className='flex flex-col lg:flex-row lg:justify-evenly gap-2 mb-4'>
+        <Input placeholder={'City'} className='flex-1 mb-2' />
+        <div className='flex gap-2'>
           <div className='flex-1'>
             <StateSelect
               states={states}
               selectedState={selectedState}
               onStateChange={handleStateChange}
-              className='w-full'
+              className=''
             />
           </div>
           <div className='flex-1'>
-            <Input placeholder={'ZIP/ Postal Code'} className='w-full' />
+            <Input placeholder={'ZIP/ Postal Code'} className='' />
           </div>
         </div>
       </div>
