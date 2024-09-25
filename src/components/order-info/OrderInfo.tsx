@@ -10,7 +10,7 @@ const OrderInfo = () => {
       <div className='block lg:hidden'>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className='w-full p-4 bg-neutral-100 text-neutral-450 text-left focus:outline-none flex items-center'
+          className='w-full px-4 pt-4 bg-neutral-100 text-neutral-450 text-left focus:outline-none flex items-center'
         >
           <span className='text-sm'>Order overview</span>
           <img
