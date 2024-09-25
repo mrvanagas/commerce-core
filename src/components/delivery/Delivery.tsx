@@ -27,7 +27,7 @@ const Delivery: React.FC = () => {
   };
 
   return (
-    <div className='bg-white border-t border-b border-neutral-550 p-4 text-neutral-450'>
+    <div className='bg-white border-t border-b border-neutral-550 p-4 mb-4 text-neutral-450'>
       <h2 className='text-2xl font-bold mb-4'>Delivery</h2>
       <div className='flex justify-between gap-2 mb-4'>
         <Input placeholder={'First Name'} />

@@ -8,7 +8,7 @@ import Payment from './components/payment/Payment'
 function App() {
 
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto bg-neutral-100'>
       <Navbar />
       <OrderInfo />
       <Contact />
