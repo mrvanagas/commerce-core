@@ -5,6 +5,8 @@ import Mastercard from '../../images/mastercard.png';
 import DinersClub from '../../images/diners-club.png';
 import Amex from '../../images/Amex.png';
 import Discover from '../../images/discover.png';
+import Button from '../../shared/button/Button';
+import Lock from '../../images/lock.png';
 
 const Payment = () => {
   const [selectedMethod, setSelectedMethod] = useState('creditCard');
@@ -51,13 +53,20 @@ const Payment = () => {
           </div>
         </div>
 
-        <div className='bg-zinc-50 p-4 border rounded-b-md'>
+        <div className='bg-zinc-50 p-4 border rounded-b-md mb-3 lg:mb-4'>
           <Input className='mb-4' placeholder='Card Number' />
           <div className='flex justify-between mb-4 gap-2'>
             <Input className='w-full' placeholder='Expiration (MM/YY)' />
             <Input className='w-full' placeholder='Security Code' />
           </div>
           <Input className='w-full' placeholder='Name on card' />
+        </div>
+        <Button />
+        <div className='flex items-center justify-center'>
+          <img src={Lock} alt='Lock' className='mr-2' />
+          <p className='text-neutral-850 text-sm font-normal'>
+            All transactions are secure and encrypted
+          </p>
         </div>
       </div>
     </div>

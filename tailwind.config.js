@@ -1,17 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       screens: {
-        'xs': '480px',
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
+        xs: '480px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
         '2xl': '1536px',
       },
       colors: {
@@ -23,13 +20,19 @@ export default {
         },
         blue: {
           150: '#F0F5FF',
-          750: '#3362AB'
-        }
+          750: '#3362AB',
+        },
+        green: {
+          750: '#009900',
+        },
       },
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
-      }
+      },
+      boxShadow: {
+        'custom-light': '0px 4px 10px 0px #4328103D',
+      },
     },
   },
   plugins: [],
-}
+};
