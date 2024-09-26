@@ -55,9 +55,13 @@ const Payment = () => {
 
         <div className='bg-zinc-50 p-4 border rounded-b-md mb-3 lg:mb-4'>
           <Input className='mb-4' placeholder='Card Number' />
-          <div className='flex justify-between mb-4 gap-2'>
-            <Input className='w-full' placeholder='Expiration (MM/YY)' />
-            <Input className='w-full' placeholder='Security Code' />
+          <div className='flex mb-4 gap-2'>
+            <div className='w-full'>
+              <Input placeholder='Expiration (MM/YY)' />
+            </div>
+            <div className='w-full'>
+              <Input placeholder='Security Code' />
+            </div>
           </div>
           <Input className='w-full' placeholder='Name on card' />
         </div>
