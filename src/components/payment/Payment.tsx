@@ -8,7 +8,7 @@ import Discover from '../../images/discover.png';
 import Button from '../../shared/button/Button';
 import Lock from '../../images/lock.png';
 
-const Payment = () => {
+const Payment: React.FC = () => {
   const [selectedMethod, setSelectedMethod] = useState('creditCard');
 
   return (
@@ -54,16 +54,16 @@ const Payment = () => {
         </div>
 
         <div className='bg-zinc-50 p-4 border rounded-b-md mb-3 lg:mb-4'>
-          <Input className='mb-4' placeholder='Card Number' />
+          <Input placeholder='Card Number' className='mb-4' name={''} />
           <div className='flex mb-4 gap-2'>
             <div className='w-full'>
-              <Input placeholder='Expiration (MM/YY)' />
+              <Input placeholder='Expiration (MM/YY)' name={''} />
             </div>
             <div className='w-full'>
-              <Input placeholder='Security Code' />
+              <Input placeholder='Security Code' name={''} />
             </div>
           </div>
-          <Input className='w-full' placeholder='Name on card' />
+          <Input className='w-full' placeholder='Name on card' name={''} />
         </div>
         <Button />
         <div className='flex items-center justify-center'>

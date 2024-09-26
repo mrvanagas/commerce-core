@@ -9,6 +9,7 @@ function App() {
   return (
     <div className='bg-neutral-100 lg:bg-white'>
       <Navbar />
+      {/* Desktop layout */}
       <div className='hidden lg:block'>
         <div className='lg:flex lg:justify-center'>
           <div className='lg:w-full'>
@@ -27,6 +28,8 @@ function App() {
           </div>
         </div>
       </div>
+
+      {/* Mobile layout */}
       <div className='block lg:hidden'>
         <OrderInfo />
         <Contact />
