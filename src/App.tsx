@@ -12,14 +12,14 @@ function App() {
       <div className='hidden lg:block'>
         <div className='lg:flex lg:justify-center'>
           <div className='lg:w-full'>
-            <div className='pr-9 ml-[440px]'>
+            <div className='pr-9 max-w-[520px] ml-auto'>
               <Contact />
               <Delivery />
               <Payment />
             </div>
           </div>
           <div className='bg-neutral-100 lg:w-full'>
-            <div className='border-l pl-9 mr-[440px]'>
+            <div className='border-l pl-9 max-w-[505px] mr-auto'>
               <div className='hidden lg:block'>
                 <OrderInfo />
               </div>
