@@ -11,8 +11,9 @@ import DinersClub from '../../images/diners-club.png';
 import Amex from '../../images/Amex.png';
 import Discover from '../../images/discover.png';
 import Lock from '../../images/lock.png';
-import { useFormContext } from 'react-hook-form';
-import formatCardNumber from '../../utils/formatCardNumber';
+import { useFormContext, SubmitHandler } from 'react-hook-form';
+import formatCardNumber from '../../utils/format-card-number';
+import { DeliveryFormData } from '../../utils/form-data';
 
 const DeliveryInformation: React.FC = () => {
   const {
@@ -21,7 +22,7 @@ const DeliveryInformation: React.FC = () => {
     setValue,
     formState: { errors },
     watch,
-  } = useFormContext();
+  } = useFormContext<DeliveryFormData>();
 
   const [selectedCountry, setSelectedCountry] = useState<string>('');
   const [selectedState, setSelectedState] = useState<string>('');
@@ -46,7 +47,7 @@ const DeliveryInformation: React.FC = () => {
     setValue('state', state);
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit: SubmitHandler<DeliveryFormData> = (data) => {
     console.log('Form Submitted:', data);
   };
 
@@ -62,6 +63,9 @@ const DeliveryInformation: React.FC = () => {
       <div className='bg-white border-y lg:border-y-0 border-neutral-550 p-4 my-4'>
         <h2 className='text-2xl font-bold mb-4 text-neutral-450'>Contact</h2>
         <InputField
+          className={`${
+            errors.address ? 'border-red-500' : 'border-neutral-300'
+          } border`}
           label='Email Address'
           placeholder='Email Address'
           {...register('email', {
@@ -83,6 +87,9 @@ const DeliveryInformation: React.FC = () => {
         <div className='flex gap-2 mb-4 justify-evenly'>
           <div className='flex-1'>
             <InputField
+              className={`${
+                errors.address ? 'border-red-500' : 'border-neutral-300'
+              } border`}
               placeholder='First Name'
               {...register('firstName', { required: 'First name is required' })}
             />
@@ -94,6 +101,9 @@ const DeliveryInformation: React.FC = () => {
           </div>
           <div className='flex-1'>
             <InputField
+              className={`${
+                errors.address ? 'border-red-500' : 'border-neutral-300'
+              } border`}
               placeholder='Last Name'
               {...register('lastName', { required: 'Last name is required' })}
             />
@@ -107,7 +117,9 @@ const DeliveryInformation: React.FC = () => {
 
         <InputField
           placeholder='Address'
-          className='mb-4'
+          className={`mb-4 ${
+            errors.address ? 'border-red-500' : 'border-neutral-300'
+          } border`}
           {...register('address', { required: 'Address is required' })}
         />
         {errors.address?.message && (
@@ -119,7 +131,9 @@ const DeliveryInformation: React.FC = () => {
             <div className='flex-1'>
               <InputField
                 placeholder='City'
-                className='w-full'
+                className={`w-full ${
+                  errors.address ? 'border-red-500' : 'border-neutral-300'
+                } border`}
                 {...register('city', { required: 'City is required' })}
               />
               {errors.city?.message && (
@@ -138,7 +152,9 @@ const DeliveryInformation: React.FC = () => {
               <div className='flex-1'>
                 <InputField
                   placeholder='ZIP/ Postal Code'
-                  className='w-full'
+                  className={`w-full ${
+                    errors.address ? 'border-red-500' : 'border-neutral-300'
+                  } border`}
                   {...register('postalCode', {
                     required: 'ZIP/Postal Code is required',
                     pattern: {
@@ -163,7 +179,9 @@ const DeliveryInformation: React.FC = () => {
             <div className='flex-1'>
               <InputField
                 placeholder='City'
-                className='w-full'
+                className={`w-full ${
+                  errors.address ? 'border-red-500' : 'border-neutral-300'
+                } border`}
                 {...register('city', { required: 'City is required' })}
               />
               {errors.city?.message && (
@@ -181,7 +199,9 @@ const DeliveryInformation: React.FC = () => {
             <div className='flex-1'>
               <InputField
                 placeholder='ZIP/ Postal Code'
-                className='w-full'
+                className={`w-full ${
+                  errors.address ? 'border-red-500' : 'border-neutral-300'
+                } border`}
                 {...register('postalCode', {
                   required: 'ZIP/Postal Code is required',
                   pattern: {
@@ -249,7 +269,9 @@ const DeliveryInformation: React.FC = () => {
 
           <div className='bg-zinc-50 p-4 border rounded-b-md mb-3 lg:mb-4'>
             <InputField
-              className='mb-4'
+              className={`mb-4 ${
+                errors.address ? 'border-red-500' : 'border-neutral-300'
+              } border`}
               placeholder='Card Number'
               {...register('cardNumber', {
                 required: 'Card number is required',
@@ -274,6 +296,9 @@ const DeliveryInformation: React.FC = () => {
             <div className='flex mb-4 gap-2'>
               <div className='w-full'>
                 <InputField
+                  className={`${
+                    errors.address ? 'border-red-500' : 'border-neutral-300'
+                  } border`}
                   placeholder='Expiration (MM/YY)'
                   {...register('expiryDate', {
                     required: 'Expiration date is required',
@@ -291,6 +316,9 @@ const DeliveryInformation: React.FC = () => {
               </div>
               <div className='w-full'>
                 <InputField
+                  className={`${
+                    errors.address ? 'border-red-500' : 'border-neutral-300'
+                  } border`}
                   placeholder='Security Code'
                   {...register('securityCode', {
                     required: 'Security code is required',
@@ -308,7 +336,9 @@ const DeliveryInformation: React.FC = () => {
               </div>
             </div>
             <InputField
-              className='w-full'
+              className={`w-full ${
+                errors.address ? 'border-red-500' : 'border-neutral-300'
+              } border`}
               placeholder='Name on card'
               {...register('cardHolderName', {
                 required: 'Name on card is required',
