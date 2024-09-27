@@ -48,7 +48,18 @@ const DeliveryInformation: React.FC = () => {
   };
 
   const onSubmit: SubmitHandler<DeliveryFormData> = (data) => {
-    console.log('Form Submitted:', data);
+    const additionalEntries = {
+      productName: 'LogoIpsum',
+      totalPrice: '$299.97',
+      quantity: '3',
+    };
+
+    const combinedData = {
+      ...data,
+      ...additionalEntries,
+    };
+    console.log('Form Submitted:', combinedData);
+    localStorage.setItem('formData', JSON.stringify(combinedData));
   };
 
   const onError = (errors: any) => {
