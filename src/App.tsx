@@ -1,4 +1,4 @@
-import DeliveryInformation from './components/DeliveryInfo/DeliveryInfo';
+import DeliveryInformation from './components/delivery-info/DeliveryInfo';
 import Navbar from './components/navbar/Navbar';
 import OrderInfo from './components/order-info/OrderInfo';
 import OurBenefits from './components/our-benefits/OurBenefits';
