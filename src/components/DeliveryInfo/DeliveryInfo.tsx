@@ -12,8 +12,12 @@ import Amex from '../../images/Amex.png';
 import Discover from '../../images/discover.png';
 import Lock from '../../images/lock.png';
 import { useFormContext, SubmitHandler } from 'react-hook-form';
-import formatCardNumber from '../../utils/format-card-number';
 import { DeliveryFormData } from '../../utils/form-data';
+import {
+  formatCardNumber,
+  formatExpiryDate,
+  formatSecurityCode,
+} from '../../utils/format-card-number';
 
 const DeliveryInformation: React.FC = () => {
   const {
@@ -281,8 +285,8 @@ const DeliveryInformation: React.FC = () => {
           <div className='bg-zinc-50 p-4 border rounded-b-md mb-3 lg:mb-4'>
             <InputField
               className={`mb-4 ${
-                errors.address ? 'border-red-500' : 'border-neutral-300'
-              } border`}
+                errors.cardNumber ? 'border-red-500' : 'border-neutral-300'
+              } border p-2`}
               placeholder='Card Number'
               {...register('cardNumber', {
                 required: 'Card number is required',
@@ -294,7 +298,8 @@ const DeliveryInformation: React.FC = () => {
                     : 'Card number must be 15-16 digits';
                 },
                 onChange: (e) => {
-                  e.target.value = formatCardNumber(e.target.value);
+                  const formattedValue = formatCardNumber(e.target.value);
+                  e.target.value = formattedValue;
                 },
               })}
             />
@@ -317,6 +322,9 @@ const DeliveryInformation: React.FC = () => {
                       value: /^(0[1-9]|1[0-2])\/?([0-9]{2})$/,
                       message: 'Invalid expiration date format',
                     },
+                    onChange: (e) => {
+                      e.target.value = formatExpiryDate(e.target.value);
+                    },
                   })}
                 />
                 {errors.expiryDate?.message && (
@@ -334,8 +342,11 @@ const DeliveryInformation: React.FC = () => {
                   {...register('securityCode', {
                     required: 'Security code is required',
                     pattern: {
-                      value: /^\d{3,4}$/,
+                      value: /^\d{3}$/,
                       message: 'Invalid security code',
+                    },
+                    onChange: (e) => {
+                      e.target.value = formatSecurityCode(e.target.value);
                     },
                   })}
                 />
