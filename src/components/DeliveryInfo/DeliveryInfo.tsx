@@ -12,6 +12,7 @@ import Amex from '../../images/Amex.png';
 import Discover from '../../images/discover.png';
 import Lock from '../../images/lock.png';
 import { useFormContext } from 'react-hook-form';
+import formatCardNumber from '../../utils/formatCardNumber';
 
 const DeliveryInformation: React.FC = () => {
   const {
@@ -248,13 +249,19 @@ const DeliveryInformation: React.FC = () => {
 
           <div className='bg-zinc-50 p-4 border rounded-b-md mb-3 lg:mb-4'>
             <InputField
-              placeholder='Card Number'
               className='mb-4'
+              placeholder='Card Number'
               {...register('cardNumber', {
                 required: 'Card number is required',
-                pattern: {
-                  value: /^(?:\d{4}\s?){3,4}$/,
-                  message: 'Card number must be 15-16 digits',
+                validate: (value) => {
+                  const strippedValue = value.replace(/\s+/g, '');
+                  return strippedValue.length === 16 ||
+                    strippedValue.length === 15
+                    ? true
+                    : 'Card number must be 15-16 digits';
+                },
+                onChange: (e) => {
+                  e.target.value = formatCardNumber(e.target.value);
                 },
               })}
             />
