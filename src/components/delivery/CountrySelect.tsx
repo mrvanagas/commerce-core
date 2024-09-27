@@ -1,5 +1,6 @@
 import React from 'react';
-import Chevron from '../../images/Chevron.svg'
+import Chevron from '../../images/Chevron.svg';
+import { useFormContext } from 'react-hook-form';
 
 interface CountrySelectProps {
   countries: { [key: string]: string[] };
@@ -14,6 +15,14 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
   onCountryChange,
   className,
 }) => {
+  const { register, setValue } = useFormContext();
+
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCountry = e.target.value;
+    onCountryChange(selectedCountry);
+    setValue('country', selectedCountry);
+  };
+
   return (
     <div className={`relative ${className}`}>
       <label
@@ -24,13 +33,12 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
       </label>
       <select
         id='country'
-        name='country'
         value={selectedCountry}
-        onChange={(e) => onCountryChange(e.target.value)}
+        {...register('country')}
+        onChange={handleCountryChange}
         className='text-sm font-normal block w-full p-3 pt-6 bg-white rounded-md border border-neutral-550 h-[52px] appearance-none pr-10 text-neutral-450'
         style={{
-          backgroundImage:
-            `url(${Chevron})`,
+          backgroundImage: `url(${Chevron})`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'right 1rem center',
           backgroundSize: '1rem 1rem',

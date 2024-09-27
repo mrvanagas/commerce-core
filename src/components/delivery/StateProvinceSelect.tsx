@@ -1,5 +1,6 @@
 import React from 'react';
-import Chevron from '../../images/Chevron.svg'
+import Chevron from '../../images/Chevron.svg';
+import { useFormContext } from 'react-hook-form';
 
 interface StateSelectProps {
   states: string[];
@@ -14,6 +15,14 @@ const StateSelect: React.FC<StateSelectProps> = ({
   onStateChange,
   className,
 }) => {
+  const { register, setValue } = useFormContext();
+
+  const handleStateChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedState = e.target.value;
+    onStateChange(selectedState);
+    setValue('state', selectedState);
+  };
+
   return (
     <div className={`${className} relative`}>
       <label
@@ -24,13 +33,12 @@ const StateSelect: React.FC<StateSelectProps> = ({
       </label>
       <select
         id='state'
-        name='state'
         value={selectedState}
-        onChange={(e) => onStateChange(e.target.value)}
+        {...register('state')}
+        onChange={handleStateChange}
         className='text-sm font-normal block w-full p-3 pt-6 bg-white rounded-md border border-neutral-550 h-[52px] appearance-none text-neutral-450'
         style={{
-          backgroundImage:
-            `url(${Chevron})`,
+          backgroundImage: `url(${Chevron})`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'right 1rem center',
           backgroundSize: '1rem 1rem',

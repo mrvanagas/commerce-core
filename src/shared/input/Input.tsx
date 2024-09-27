@@ -5,19 +5,14 @@ interface InputFieldProps {
   type?: string;
   placeholder: string;
   className?: string;
-  name: string;
 }
 
 const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
-  (
-    { label, type = 'text', placeholder, className = '', name, ...rest },
-    ref,
-  ) => {
+  ({ label, type = 'text', placeholder, className = '', ...rest }, ref) => {
     return (
       <div>
         <label className='sr-only'>{label}</label>
         <input
-          name={name}
           type={type}
           ref={ref}
           placeholder={placeholder}

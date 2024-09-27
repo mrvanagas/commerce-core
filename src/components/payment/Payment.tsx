@@ -54,16 +54,16 @@ const Payment: React.FC = () => {
         </div>
 
         <div className='bg-zinc-50 p-4 border rounded-b-md mb-3 lg:mb-4'>
-          <Input placeholder='Card Number' className='mb-4' name={''} />
+          <Input placeholder='Card Number' className='mb-4' />
           <div className='flex mb-4 gap-2'>
             <div className='w-full'>
-              <Input placeholder='Expiration (MM/YY)' name={''} />
+              <Input placeholder='Expiration (MM/YY)' />
             </div>
             <div className='w-full'>
-              <Input placeholder='Security Code' name={''} />
+              <Input placeholder='Security Code' />
             </div>
           </div>
-          <Input className='w-full' placeholder='Name on card' name={''} />
+          <Input className='w-full' placeholder='Name on card' />
         </div>
         <Button />
         <div className='flex items-center justify-center'>
