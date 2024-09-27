@@ -5,7 +5,7 @@ import OurBenefits from '../our-benefits/OurBenefits';
 
 const OrderInfo = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+// These are hardcoded values, do to not being any logic to add or remove items
   return (
     <div className='mx-auto'>
       <div className='block lg:hidden'>

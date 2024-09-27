@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react';
 import countryStateData from '../../utils/countries';
 import InputField from '../../shared/input/Input';
@@ -52,6 +51,7 @@ const DeliveryInformation: React.FC = () => {
   };
 
   const onSubmit: SubmitHandler<DeliveryFormData> = (data) => {
+    // Added hardcoded values to the form, to imitate full order data, since there is no logic to dynamically add items
     const additionalEntries = {
       productName: 'LogoIpsum',
       totalPrice: '$299.97',
@@ -62,18 +62,13 @@ const DeliveryInformation: React.FC = () => {
       ...data,
       ...additionalEntries,
     };
-    console.log('Form Submitted:', combinedData);
     localStorage.setItem('formData', JSON.stringify(combinedData));
-  };
-
-  const onError = (errors: any) => {
-    console.log('Validation errors:', errors);
   };
 
   const selectedMethod = watch('paymentMethod');
 
   return (
-    <form onSubmit={handleSubmit(onSubmit, onError)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       {/* Contact Section */}
       <div className='bg-white border-y lg:border-y-0 border-neutral-550 p-4 my-4'>
         <h2 className='text-2xl font-bold mb-4 text-neutral-450'>Contact</h2>
@@ -233,7 +228,9 @@ const DeliveryInformation: React.FC = () => {
             </div>
           </div>
         </div>
-
+        {/* There is an issue here, that causes the loss of all previous input fields, BEFORE selecting a country. 
+        Once a country has been selected, the issue disappears. 
+        I was not able to find the cause for it, yet.*/}
         <CountrySelect
           countries={countryStateData}
           selectedCountry={selectedCountry}
